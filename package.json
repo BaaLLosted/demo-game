@@ -1,0 +1,12 @@
+{
+  "name": "anatomy-of-scam",
+  "version": "1.0.0",
+  "description": "Educational scam psychology simulator",
+  "main": "script.js",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

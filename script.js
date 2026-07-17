@@ -167,7 +167,13 @@ let state = {
 
     style: null,
 
-    action: null
+    action: null,
+
+    startTime: null,
+
+    endTime: null,
+
+    totalTime: 0
 
 };
 
@@ -178,6 +184,8 @@ const content = document.getElementById("content");
 // Старт игры
 
 function start() {
+
+    state.startTime = Date.now();
 
     content.innerHTML =
         "<div class='system-msg'>ВЫБЕРИТЕ ОБЪЕКТ:</div>";
@@ -329,13 +337,39 @@ function chooseStyle(id) {
 
 function chooseAction(id) {
 
+
     state.action = id;
+
+    state.endTime = Date.now();
+
+    state.totalTime =
+        Math.floor(
+            (state.endTime - state.startTime) / 1000
+        );
 
     showFinalResult();
 
 }
 
+function getTimeBonus(){
 
+    let seconds = state.totalTime;
+
+    if(seconds < 10){
+
+        return 10;
+
+    }
+
+    if(seconds > 60){
+
+        return -15;
+
+    }
+
+    return 0;
+
+}
 
 // Расчёт результата
 
@@ -353,6 +387,8 @@ function calculateScore() {
     score += table.style[state.style];
 
     score += table.action[state.action];
+    
+    score += getTimeBonus();
 
 
     // ограничение от 0 до 100

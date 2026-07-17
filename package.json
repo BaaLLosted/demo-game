@@ -4,9 +4,9 @@
   "description": "Educational scam psychology simulator",
   "main": "script.js",
   "scripts": {
-    "start": "npx serve ."
+    "start": "serve ."
   },
-  "devDependencies": {
+  "dependencies": {
     "serve": "^14.2.0"
   }
 }
